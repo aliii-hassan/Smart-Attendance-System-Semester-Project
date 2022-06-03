@@ -1,0 +1,7 @@
+const SignUp = async (request, response) => {
+    response.render("./SignUpPage");
+}
+
+module.exports = {
+    SignUp,
+};
