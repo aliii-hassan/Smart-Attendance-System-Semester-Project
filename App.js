@@ -21,4 +21,6 @@ const PublicRoutes = require("./Protocols/Routes/PublicRoutes");
 // ASSIGN ROUTES & APIs
 app.use("/", PublicRoutes);
 
-app.listen(3000);
+// ASSIGN AND LISTEN PORT
+const port = process.env.PORT || 3000
+app.listen(port);
