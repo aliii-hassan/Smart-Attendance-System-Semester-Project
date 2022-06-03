@@ -15,11 +15,16 @@ app.set('view engine', 'ejs');
 
 // IMPORT ROUTES
 const PublicRoutes = require("./Protocols/Routes/PublicRoutes");
+const AdminRoutes = require("./Protocols/Routes/AdminRoutes");
+const PublicAPIs = require("./Protocols/APIs/PublicAPIs");
 
 // IMPORT APIs
 
 // ASSIGN ROUTES & APIs
 app.use("/", PublicRoutes);
+app.use("/admin/", AdminRoutes);
+
+app.use("/api/", PublicAPIs);
 
 // ASSIGN AND LISTEN PORT
 const port = process.env.PORT || 3000
