@@ -2,6 +2,10 @@ const SignUp = async (request, response) => {
     response.render("./SignUpPage");
 }
 
+const SignIn = async (request, response) => {
+    response.render("./SignInPage");
+}
+
 module.exports = {
-    SignUp,
+    SignUp, SignIn,
 };
