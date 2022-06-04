@@ -3,7 +3,7 @@
     background-color: rgba(0,0,0,0.2);
 }
 
-#company-form-div, #company-name
+#company-form-div, #employee-form-div, #student-form-div, #company-name
 {
     width: 100%;
 }
