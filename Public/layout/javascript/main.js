@@ -11,6 +11,9 @@ $(function ()
         autoPlaceholder:"polite",
     });
 
+    // Site Home Page Animations
+    $(window).on("scroll", SiteIntroductionAnimatedView);
+
     // Hide Registration Forms At Page Load
     $("#company-form-div").hide();
     $("#employee-form-div").hide();
@@ -41,6 +44,28 @@ $(function ()
 function EnableSelect2()
 {
     $(".select2").select2();
+}
+
+function SiteIntroductionAnimatedView()
+{
+    var SiteIntroduction = $('.description-site-introduction').toArray();
+
+    SiteIntroduction.forEach(function(SiteIntroBody)
+    {
+        var WindowHeight = $(window).innerHeight();
+        var RevealTopPoint = SiteIntroBody.getBoundingClientRect().top;
+        var RevealBottomPoint = SiteIntroBody.getBoundingClientRect().bottom;
+        var RevealPoint = 0;
+
+        if (RevealTopPoint < (WindowHeight - RevealPoint) && RevealBottomPoint >= 0)
+        {
+            SiteIntroBody.classList.add('active');
+        }
+        else
+        {
+            SiteIntroBody.classList.remove('active');
+        }
+    });
 }
 
 function SignUpFormComponentsShowHide()
@@ -165,7 +190,14 @@ function CheckCompanyFormValidity(event)
                     break;
 
                 default:
-                    var EmailAddressPrefix = "";
+                    if (event.currentTarget.id == "password-reset-email-address")
+                    {
+                        var EmailAddressPrefix = "password-reset-";
+                    }
+                    else
+                    {
+                        var EmailAddressPrefix = "";
+                    }
                     break;
             }
             var EmailAddress = $("#"+EmailAddressPrefix+"email-address").val();
@@ -197,7 +229,14 @@ function CheckCompanyFormValidity(event)
                     break;
 
                 default:
-                    var PasswordPrefix = "";
+                    if (event.currentTarget.id == "password-reset-password")
+                    {
+                        var PasswordPrefix = "password-reset-";
+                    }
+                    else
+                    {
+                        var PasswordPrefix = "";
+                    }
                     break;
             }
             var Password = $("#"+PasswordPrefix+"password").val();
@@ -301,4 +340,4 @@ function CheckCompanyFormValidity(event)
             break;
 
     }
-}   
+}
