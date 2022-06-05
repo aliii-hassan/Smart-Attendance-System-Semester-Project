@@ -24,7 +24,7 @@
                                 "PageLink": "/",
                             },
                             {
-                                "PageName": "Sign Up",
+                                "PageName": "Sign In",
                             }
                         ];
     %>
@@ -37,20 +37,34 @@
                 <div class="col-12 col-lg-9">
                     <div class="card shadow-2-strong card-registration bg-dark" style="border-radius: 15px;">
                         <div class="card-body p-4 p-md-5">
-                        <h2 class="mb-4 pb-2 pb-md-0 mb-md-5 text-primary font-weight-bold">Sign In</h2>
-                        
-                        <form class="text-light">
-                            <div class="row">
-                                <%
-                                var TagNamePrefixData = "";
-                                %>
-                                <%- include("./Components/UsernamePassword", {TagNamePrefixData: TagNamePrefixData}); %>
+                            <h2 class="mb-4 pb-2 pb-md-0 mb-md-5 text-primary font-weight-bold">SIGN IN FORM</h2>
+                            
+                            <form class="text-light">
+                                <div class="row">
+                                    <!-- Embed UsernamePassword Component -->
+                                    <%
+                                    var TagNamePrefixData = "";
+                                    %>
+                                    <%- include("./Components/UsernamePassword", {TagNamePrefixData: TagNamePrefixData}); %>
+                                </div>
+
+                                <div class="mt-4 text-left float-left">
+                                    Don't Have an Account? 
+                                    <a href="/signup" class="btn btn-primary btn-outline-light btn-sm font-weight-bold">
+                                        SIGN UP
+                                    </a>
+                                </div>
+                
+                                <div class="mt-4 pt-2 text-right">
+                                    <input class="btn btn-primary btn-outline-light btn-lg font-weight-bold" type="submit" value="SIGN IN" />
+                                </div>            
+                            </form>
+
+                            <div id="forget-password-div" class="mt-4 py-1 text-center" style="border-radius: 10px;">
+                                <a href="/password-reset">
+                                    Forgotten Password?
+                                </a>
                             </div>
-            
-                            <div class="mt-4 pt-2 text-right">
-                                <input class="btn btn-primary btn-outline-light btn-lg" type="submit" value="Sign In" />
-                            </div>            
-                        </form>
                         </div>
                     </div>
                 </div>
