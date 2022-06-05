@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>
+        Smart Attendance System
+    </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <%- include("./Components/ImportCssFiles"); %>
+  </head>
+  <body>
+
+    <!-- Embed NavBar Component -->
+    <%- include("./Components/NavBar"); %>
+
+    <!-- Embed Breadcrumb Component -->
+    <%
+    var BreadcrumbData = [
+                            {
+                                "PageName": "Home",
+                                "PageLink": "/",
+                            },
+                            {
+                                "PageName": "Sign Up",
+                            }
+                        ];
+    %>
+    <%- include("./Components/Breadcrumb", {BreadcrumbData: BreadcrumbData}); %>
+    
+    <!-- Current Page Body -->
+    <div id="page-body-div">
+        <div class="container py-3 h-100">
+            <div class="row justify-content-center align-items-center h-100">
+                <div class="col-12 col-lg-9">
+                    <div class="card shadow-2-strong card-registration bg-dark" style="border-radius: 15px;">
+                        <div class="card-body p-4 p-md-5">
+                        <h2 class="mb-4 pb-2 pb-md-0 mb-md-5 text-primary font-weight-bold">Registration Form</h2>
+                        
+                        <form class="text-light">
+                            <div class="row">
+                                <div class="col-md-12 mb-4">                
+                                    <div class="form-check">
+                                        <label class="form-label font-weight-bold" for="registration-type">
+                                            I want to Register Myself as:
+                                        </label>
+                                        <span id="registration-type-span" class="asterisk ml-1 font-weight-bold text-danger">
+                                            *
+                                        </span>
+                                    </div>
+
+                                    <div class="form-check ml-3">
+                                        <input type="radio" class="form-check-input" name="registration-type" id="registration-type-company" 
+                                                value="Company">
+                                        <label class="form-label" for="Company">
+                                            Company
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check ml-3">
+                                        <input type="radio" class="form-check-input" name="registration-type" id="registration-type-employee" 
+                                                value="Employee">
+                                        <label class="form-label" for="Employee">
+                                            Employee (Teacher, Staff etc.)
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check ml-3">
+                                        <input type="radio" class="form-check-input" name="registration-type" id="registration-type-student" 
+                                                value="Student">
+                                        <label class="form-label" for="Student">
+                                            Student
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div id="company-form-div">
+                                    <div class="col-12 mb-4 form-group pmd-textfield pmd-textfield-outline">
+                                        <label class="form-label font-weight-bold" for="company-name">
+                                            Company Name:
+                                        </label>
+                                        <span id="company-name-span" class="asterisk ml-1 font-weight-bold text-danger">
+                                            *
+                                        </span>
+                                        <input type="text" id="company-name" name="company-name" class="form-control" 
+                                                placeholder=" Company Name">
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="col-md-6 col-sm-10 mb-4 form-group pmd-textfield pmd-textfield-outline">
+                                            <label class="form-label font-weight-bold" for="company-industry-name">
+                                                Industry:
+                                            </label>
+                                            <span id="company-industry-name-span" class="asterisk ml-1 font-weight-bold text-danger">
+                                                *
+                                            </span>
+                                            <select id="company-industry-name" name="company-industry-name" class="form-control select2 ml-1">
+                                                <option value="">Select Industry</option>
+                                            </select>
+                                        </div>
+    
+                                        <div class="col-md-6 col-sm-10 mb-4 form-group pmd-textfield pmd-textfield-outline">
+                                            <label class="form-label font-weight-bold" for="company-number-of-employees">
+                                                No. of Emplyees:
+                                            </label>
+                                            <span id="company-number-of-employees-span" class="asterisk ml-1 font-weight-bold text-danger">
+                                                *
+                                            </span>
+                                            <select id="company-number-of-employees" name="company-number-of-employees" class="custom-select select2">
+                                                <option value="">No. of Employees</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <%
+                                    var TagNamePrefixData = "company-";
+                                    %>
+                                    <%- include("./Components/UsernamePassword", {TagNamePrefixData: TagNamePrefixData}); %>
+
+                                    <div class="col-12 mb-4 form-group pmd-textfield pmd-textfield-outline">
+                                        <label class="form-label font-weight-bold" for="company-contact-number">
+                                            Contact Number:
+                                        </label>
+                                        <span id="company-contact-number-span" class="asterisk ml-1 font-weight-bold text-danger">
+                                            *
+                                        </span>
+                                        <input type="tel" id="company-contact-number" name="company-contact-number" class="form-control ml-1" 
+                                                placeholder=" XXXXXXXXXX" />
+                                    </div>
+                                </div>
+
+                                <div id="employee-form-div">
+                                    <div class="col-12 mb-4 form-group pmd-textfield pmd-textfield-outline">
+                                        <label class="form-label font-weight-bold" for="employee-first-name">
+                                            First Name:
+                                        </label>
+                                        <span id="employee-first-name-span" class="asterisk ml-1 font-weight-bold text-danger">
+                                            *
+                                        </span>
+                                        <input type="text" id="employee-first-name" name="employee-first-name" class="form-control" 
+                                                placeholder=" First Name">
+                                    </div>
+
+                                    <div class="col-12 mb-4 form-group pmd-textfield pmd-textfield-outline">
+                                        <label class="form-label font-weight-bold" for="employee-last-name">
+                                            Last Name:
+                                        </label>
+                                        <span id="employee-last-name-span" class="asterisk ml-1 font-weight-bold text-danger">
+                                            *
+                                        </span>
+                                        <input type="text" id="employee-last-name" name="employee-last-name" class="form-control" 
+                                                placeholder=" Last Name">
+                                    </div>
+
+                                    <%
+                                    var TagNamePrefixData = "employee-";
+                                    %>
+                                    <%- include("./Components/UsernamePassword", {TagNamePrefixData: TagNamePrefixData}); %>
+
+                                    <div class="col-12 mb-4 form-group pmd-textfield pmd-textfield-outline">
+                                        <label class="form-label font-weight-bold" for="employee-contact-number">
+                                            Contact Number:
+                                        </label>
+                                        <span id="employee-contact-number-span" class="asterisk ml-1 font-weight-bold text-danger">
+                                            *
+                                        </span>
+                                        <input type="tel" id="employee-contact-number" name="employee-contact-number" class="form-control ml-1" 
+                                                placeholder=" XXXXXXXXXX" />
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="col-md-6 col-sm-10 mb-4 form-group pmd-textfield pmd-textfield-outline">
+                                            <label class="form-label font-weight-bold" for="employee-company-name">
+                                                Company:
+                                            </label>
+                                            <span id="employee-company-name-span" class="asterisk ml-1 font-weight-bold text-danger">
+                                                *
+                                            </span>
+                                            <select id="employee-company-name" name="employee-company-name" class="form-control select2 ml-1">
+                                                <option value="">Select Company</option>
+                                            </select>
+                                        </div>
+    
+                                        <div class="col-md-6 col-sm-10 mb-4 form-group pmd-textfield pmd-textfield-outline">
+                                            <label class="form-label font-weight-bold" for="employee-position">
+                                                Position:
+                                            </label>
+                                            <span id="employee-position-span" class="asterisk ml-1 font-weight-bold text-danger">
+                                                *
+                                            </span>
+                                            <select id="employee-position" name="employee-position" class="custom-select select2">
+                                                <option value="">Select Position</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="student-form-div">
+                                    <div class="col-12 mb-4 form-group pmd-textfield pmd-textfield-outline">
+                                        <label class="form-label font-weight-bold" for="student-first-name">
+                                            First Name:
+                                        </label>
+                                        <span id="student-first-name-span" class="asterisk ml-1 font-weight-bold text-danger">
+                                            *
+                                        </span>
+                                        <input type="text" id="student-first-name" name="student-first-name" class="form-control" 
+                                                placeholder=" First Name">
+                                    </div>
+
+                                    <div class="col-12 mb-4 form-group pmd-textfield pmd-textfield-outline">
+                                        <label class="form-label font-weight-bold" for="student-last-name">
+                                            Last Name:
+                                        </label>
+                                        <span id="student-last-name-span" class="asterisk ml-1 font-weight-bold text-danger">
+                                            *
+                                        </span>
+                                        <input type="text" id="student-last-name" name="student-last-name" class="form-control" 
+                                                placeholder=" Last Name">
+                                    </div>
+
+                                    <%
+                                    var TagNamePrefixData = "student-";
+                                    %>
+                                    <%- include("./Components/UsernamePassword", {TagNamePrefixData: TagNamePrefixData}); %>
+
+                                    <div class="col-12 mb-4 form-group pmd-textfield pmd-textfield-outline">
+                                        <label class="form-label font-weight-bold" for="student-contact-number">
+                                            Contact Number:
+                                        </label>
+                                        <span id="student-contact-number-span" class="asterisk ml-1 font-weight-bold text-danger">
+                                            *
+                                        </span>
+                                        <input type="tel" id="student-contact-number" name="student-contact-number" class="form-control ml-1" 
+                                                placeholder=" XXXXXXXXXX" />
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div class="mt-4 pt-2 text-right">
+                                <input class="btn btn-primary btn-outline-light btn-lg" type="submit" value="Register" />
+                            </div>            
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Embed Footer Component -->
+    <%- include("./Components/Footer"); %>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <%- include("./Components/ImportJavascriptFiles"); %>
+  </body>
+</html>

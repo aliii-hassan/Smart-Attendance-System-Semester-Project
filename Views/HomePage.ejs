@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>
+        Smart Attendance System
+    </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <%- include("./Components/ImportCssFiles"); %>
+  </head>
+  <body>
+
+    <!-- Embed NavBar Component -->
+    <%- include("./Components/NavBar"); %>
+
+    <!-- Embed Breadcrumb Component -->
+    <%
+    var BreadcrumbData = [
+                            {
+                                "PageName": "Home",
+                            }
+                        ];
+    %>
+    <%- include("./Components/Breadcrumb", {BreadcrumbData: BreadcrumbData}); %>
+    
+    <!-- Current Page Body -->
+    <div id="page-body-div">
+        <div class="container">
+            <div class="row mt-3">
+                <div class="jumbotron bg-dark">
+                    <h1 class="display-9 text-primary">
+                        Your Attendance Matters!
+                    </h1>
+                    <p class="lead text-light">
+                        A Simple & Automatic Attendance Marking Platform that will Help the Small and 
+                        Large Scale Organizations to Keep the Track of Their People! 
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <img src="/images/OurVision.jpg" alt="Image Not Found" class="bd-placeholder-img rounded-circle" width="140em" height="140em">
+                    <h2>
+                        Our Vision
+                    </h2>
+                    <p>
+                        Our vision is to Bring Ease and Create a Better Everyday Life for Many People at their Workplaces.
+                    </p>
+                </div>
+                
+                <div class="col-md-4 text-center">
+                    <img src="/images/OurAim.jpg" alt="Image Not Found" class="bd-placeholder-img rounded-circle" width="140em" height="140em">
+                    <h2>
+                        Our Aim
+                    </h2>
+                    <p>
+                        To Create an Efficient World-Class System that Engages and Prepares all Students and Employees to be 
+                        Punctual for Educational Institutions, Workplaces, and Importantly to their Careers.
+                    </p>
+                </div>
+
+                <div class="col-md-4 text-center">
+                    <img src="/images/Client.jpg" alt="Image Not Found" class="bd-placeholder-img rounded-circle" width="140em" height="140em">
+                    <h2>
+                        Our Clients
+                    </h2>
+                    <p>
+                        SAS has Gained the Trust from all over the World with over 200+ Clients, 10+ Organziations, and 100+ Employees.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Embed Footer Component -->
+    <%- include("./Components/Footer"); %>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <%- include("./Components/ImportJavascriptFiles"); %>
+  </body>
+</html>
