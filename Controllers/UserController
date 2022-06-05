@@ -6,6 +6,10 @@ const SignIn = async (request, response) => {
     response.render("./SignInPage");
 }
 
+const PasswordReset = async (request, response) => {
+    response.render("./PasswordResetPage");
+}
+
 module.exports = {
-    SignUp, SignIn,
+    SignUp, SignIn, PasswordReset,
 };
