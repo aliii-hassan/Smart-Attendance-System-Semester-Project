@@ -5,45 +5,100 @@ $(function ()
     EnableSelect2();
 
     // Enable International Telephone Input
-    $("input[id$='contact-number']").intlTelInput({
-        allowDropdown:true,
-        autoHideDialCode:true,
-        autoPlaceholder:"polite",
-    });
+    EnableInternationalTelephoneInput();
 
-    // Site Home Page Animations
+    // Site Home Page Animations, Modal-Popup
     $(window).on("scroll", SiteIntroductionAnimatedView);
-
+    $("#home-page-login-popup-button").click(ShowHomePageLoginPopup);
+    setTimeout(function (){ $("#home-page-login-popup-button").click(); }, 7000);
+    $("#home-page-login-popup-close-button").click(CloseHomePageLoginPopup);
+    
     // Hide Registration Forms At Page Load
-    $("#company-form-div").hide();
-    $("#employee-form-div").hide();
-    $("#student-form-div").hide();
+    HideRegistrationFormsAtPageLoad();
 
     // Show/Hide Registration Forms on the basis of Checked Value
     $("input[name='registration-type']").change(SignUpFormComponentsShowHide);
 
     // Registration Forms Validation
-    $("#company-name").on("blur", { InputFieldName: "company-name" }, CheckCompanyFormValidity);
-    $("#company-name").on("input", { InputFieldName: "company-name" }, CheckCompanyFormValidity);
-    $("#company-industry-name").on("change", { InputFieldName: "company-industry-name" }, CheckCompanyFormValidity);
-    $("#company-number-of-employees").on("change", { InputFieldName: "company-number-of-employees" }, CheckCompanyFormValidity);
-    $("input[id$='email-address']").on("blur", { InputFieldName: "email-address" }, CheckCompanyFormValidity);
-    $("input[id$='email-address']").on("input", { InputFieldName: "email-address" }, CheckCompanyFormValidity);
-    $("input[id$='password']").on("blur", { InputFieldName: "password" }, CheckCompanyFormValidity);
-    $("input[id$='password']").on("input", { InputFieldName: "password" }, CheckCompanyFormValidity);
-    $("input[id$='contact-number']").on("blur", { InputFieldName: "contact-number" }, CheckCompanyFormValidity);
-    $("input[id$='contact-number']").on("input", { InputFieldName: "contact-number" }, CheckCompanyFormValidity);
-    $("input[id$='first-name']").on("blur", { InputFieldName: "first-name" }, CheckCompanyFormValidity);
-    $("input[id$='first-name']").on("input", { InputFieldName: "first-name" }, CheckCompanyFormValidity);
-    $("input[id$='last-name']").on("blur", { InputFieldName: "last-name" }, CheckCompanyFormValidity);
-    $("input[id$='last-name']").on("input", { InputFieldName: "last-name" }, CheckCompanyFormValidity);
-    $("#employee-company-name").on("change", { InputFieldName: "employee-company-name" }, CheckCompanyFormValidity);
-    $("#employee-position").on("change", { InputFieldName: "employee-position" }, CheckCompanyFormValidity);
+    $("#company-name").on("blur input", { InputFieldName: "company-name" }, CheckFormsValidity);
+    $("#company-industry-name").on("change", { InputFieldName: "company-industry-name" }, CheckFormsValidity);
+    $("#company-number-of-employees").on("change", { InputFieldName: "company-number-of-employees" }, CheckFormsValidity);
+    $("input[id$='email-address']").on("blur input", { InputFieldName: "email-address" }, CheckFormsValidity);
+    $("input[id$='password']").on("blur input", { InputFieldName: "password" }, CheckFormsValidity);
+    $("input[id$='contact-number']").on("blur input", { InputFieldName: "contact-number" }, CheckFormsValidity);
+    $("input[id$='first-name']").on("blur input", { InputFieldName: "first-name" }, CheckFormsValidity);
+    $("input[id$='last-name']").on("blur input", { InputFieldName: "last-name" }, CheckFormsValidity);
+    $("#employee-company-name").on("change", { InputFieldName: "employee-company-name" }, CheckFormsValidity);
+    $("#employee-position").on("change", { InputFieldName: "employee-position" }, CheckFormsValidity);
+
+    // Handle Forms Submission
+    $('#signin-form').submit(SigninFormSubmission);
+    $('#signup-form').submit(SignupFormSubmission);
+    $('#password-reset-form').submit(PasswordResetFormSubmission);
+
+    // Set Rules for Validation before Submission
+    $("form[id$='form']").validate({
+        rules: 
+        {
+            "company-name": "required",
+            "company-industry-name": "required",
+            "company-number-of-employees": "required",
+            "email-address":
+            {
+                required: true,
+                email: true,
+            },
+            "password":
+            {
+                required: true,
+                minlength : 8,
+            },
+            "contact-number":
+            {
+                required: true,
+                minlength: 11,
+            },
+            "first-name": "required",
+            "last-name": "required",
+            "employee-company-name": "required",
+            "employee-position": "required",
+
+            messages: 
+            {
+                "company-name": "",
+                "company-industry-name": "",
+                "company-number-of-employees": "",
+                "email-address": "",
+                "password": "",
+                "contact-number": "",
+                "first-name": "",
+                "last-name": "",
+                "employee-company-name": "",
+                "employee-position": "",
+            }
+        }
+      });
 });
 
 function EnableSelect2()
 {
     $(".select2").select2();
+}
+
+function EnableInternationalTelephoneInput()
+{
+    $("input[id$='contact-number']").intlTelInput({
+        allowDropdown:true,
+        autoHideDialCode:true,
+        autoPlaceholder:"polite",
+    });
+}
+
+function HideRegistrationFormsAtPageLoad()
+{
+    $("#company-form-div").hide();
+    $("#employee-form-div").hide();
+    $("#student-form-div").hide();
 }
 
 function SiteIntroductionAnimatedView()
@@ -66,6 +121,17 @@ function SiteIntroductionAnimatedView()
             SiteIntroBody.classList.remove('active');
         }
     });
+}
+
+function ShowHomePageLoginPopup()
+{
+    $('#LoginPopupModal').modal('show');
+}
+
+
+function CloseHomePageLoginPopup()
+{
+    $('#LoginPopupModal').modal('hide');
 }
 
 function SignUpFormComponentsShowHide()
@@ -104,7 +170,7 @@ function SignUpFormComponentsShowHide()
     }
 }
 
-function CheckCompanyFormValidity(event)
+function CheckFormsValidity(event)
 {
     switch (event.data.InputFieldName)
     {
@@ -204,11 +270,27 @@ function CheckCompanyFormValidity(event)
             if (EmailAddress == null || EmailAddress == "")
             {
                 $("#"+EmailAddressPrefix+"email-address-span").show();
+                $("#"+EmailAddressPrefix+"email-address-span").removeClass('text-success');
+                $("#"+EmailAddressPrefix+"email-address-span").addClass('text-danger');
                 $("#"+EmailAddressPrefix+"email-address-span").html("<sup>Email Address is Required</sup>");
             }
             else
             {
-                $("#"+EmailAddressPrefix+"email-address-span").hide();
+                if (!(EmailValidation(EmailAddress)))
+                {
+                    $("#"+EmailAddressPrefix+"email-address-span").show();
+                    $("#"+EmailAddressPrefix+"email-address-span").removeClass('text-success');
+                    $("#"+EmailAddressPrefix+"email-address-span").addClass('text-danger');
+                    $("#"+EmailAddressPrefix+"email-address-span").html("<sup>Invalid Email Address</sup>");
+                }
+                else
+                {
+                    $("#"+EmailAddressPrefix+"email-address-span").show();
+                    $("#"+EmailAddressPrefix+"email-address-span").removeClass('text-danger');
+                    $("#"+EmailAddressPrefix+"email-address-span").addClass('text-success');
+                    $("#"+EmailAddressPrefix+"email-address-span").html("<sup>&#x2705; Email Address is Valid</sup>");
+                    setTimeout(function (){ $("#"+EmailAddressPrefix+"email-address-span").fadeOut(1000); }, 7000);
+                }
             }
             break;
 
@@ -243,11 +325,54 @@ function CheckCompanyFormValidity(event)
             if (Password == null || Password == "")
             {
                 $("#"+PasswordPrefix+"password-span").show();
+                $("#"+PasswordPrefix+"password-span").removeClass('text-success');
+                $("#"+PasswordPrefix+"password-span").addClass('text-danger');
                 $("#"+PasswordPrefix+"password-span").html("<sup>Password is Required</sup>");
             }
             else
             {
-                $("#"+PasswordPrefix+"password-span").hide();
+                switch (PasswordValidation(Password))
+                {
+                    case "Valid":
+                        $("#"+PasswordPrefix+"password-span").show();
+                        $("#"+PasswordPrefix+"password-span").removeClass('text-danger');
+                        $("#"+PasswordPrefix+"password-span").addClass('text-success');
+                        $("#"+PasswordPrefix+"password-span").html("<sup>&#x2705; Password is Valid</sup>");
+                        setTimeout(function (){ $("#"+PasswordPrefix+"password-span").fadeOut(1000); }, 7000);
+                        break;
+                    case "Eight Characters":
+                        $("#"+PasswordPrefix+"password-span").show();
+                        $("#"+PasswordPrefix+"password-span").removeClass('text-success');
+                        $("#"+PasswordPrefix+"password-span").addClass('text-danger');
+                        $("#"+PasswordPrefix+"password-span").html("<sup>Password should have atleast eight characters</sup>");
+                        break
+                    case "Uppercase":
+                        $("#"+PasswordPrefix+"password-span").show();
+                        $("#"+PasswordPrefix+"password-span").removeClass('text-success');
+                        $("#"+PasswordPrefix+"password-span").addClass('text-danger');
+                        $("#"+PasswordPrefix+"password-span").html("<sup>Password should have atleast one uppercase character</sup>");
+                        break
+                    case "Lowercase":
+                        $("#"+PasswordPrefix+"password-span").show();
+                        $("#"+PasswordPrefix+"password-span").removeClass('text-success');
+                        $("#"+PasswordPrefix+"password-span").addClass('text-danger');
+                        $("#"+PasswordPrefix+"password-span").html("<sup>Password should have atleast one lowercase character</sup>");
+                        break
+                    case "One Digit":
+                        $("#"+PasswordPrefix+"password-span").show();
+                        $("#"+PasswordPrefix+"password-span").removeClass('text-success');
+                        $("#"+PasswordPrefix+"password-span").addClass('text-danger');
+                        $("#"+PasswordPrefix+"password-span").html("<sup>Password should have atleast one digit</sup>");
+                        break
+                    case "Special Character":
+                        $("#"+PasswordPrefix+"password-span").show();
+                        $("#"+PasswordPrefix+"password-span").removeClass('text-success');
+                        $("#"+PasswordPrefix+"password-span").addClass('text-danger');
+                        $("#"+PasswordPrefix+"password-span").html("<sup>Password should have atleast one special character</sup>");
+                        break
+                    default:
+                        break;
+                }
             }
             break;
 
@@ -340,4 +465,103 @@ function CheckCompanyFormValidity(event)
             break;
 
     }
+}
+
+function EmailValidation(Email) 
+{
+    var emailValidatePattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return emailValidatePattern.test(Email);
+}
+
+function PasswordValidation(Password) 
+{
+    var passwordValidatePattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+
+    if (!(passwordValidatePattern.test(Password)))
+    {
+        var atleastOneUppercaseCharacters = /^.*[A-Z].*$/;
+        var atleastOneLowercaseCharacters = /^.*[a-z].*$/;
+        var atleastOneDigit = /^.*[0-9].*$/;
+        var atleastOneSpecialCharacter = /^.*[#?!@$%^&*-].*$/;
+
+        if (!(atleastOneUppercaseCharacters.test(Password)))
+        {
+            return "Uppercase";
+        }
+
+        if (!(atleastOneLowercaseCharacters.test(Password)))
+        {
+            return "Lowercase";
+        }
+
+        if (!(atleastOneDigit.test(Password)))
+        {
+            return "One Digit";
+        }
+
+        if (!(atleastOneSpecialCharacter.test(Password)))
+        {
+            return "Special Character";
+        }
+
+        return "Eight Characters";
+
+    }
+    else
+    {
+        return "Valid";
+    }
+}
+
+function SigninFormSubmission(event)
+{
+    if ((PasswordValidation($("input[name='password']").val()) != "Valid") || (!(EmailValidation($("input[name='email-address']").val()))))
+    {
+        event.preventDefault();
+    }
+
+    $('#signin-form').validate();
+}
+
+function SignupFormSubmission(event)
+{
+    var RegistrationType = $("input[name='registration-type']:checked").val();
+
+    switch (RegistrationType)
+    {
+        case "Company":
+            $("div#employee-form-div").remove();
+            $("div#student-form-div").remove();
+            break;
+
+        case "Employee":
+            $("div#company-form-div").remove();
+            $("div#student-form-div").remove();
+            break;
+
+        case "Student":
+            $("div#company-form-div").remove();
+            $("div#employee-form-div").remove();
+            break;
+
+        default:
+            break;
+    }
+    
+    if ((PasswordValidation($("input[name='password']").val()) != "Valid") || (!(EmailValidation($("input[name='email-address']").val()))))
+    {
+        event.preventDefault();
+    }
+
+    $('#signup-form').validate();
+}
+
+function PasswordResetFormSubmission(event)
+{
+    if ((PasswordValidation($("input[name='password']").val()) != "Valid") || (!(EmailValidation($("input[name='email-address']").val()))))
+    {
+        event.preventDefault();
+    }
+
+    $('#password-reset-form').validate();
 }
