@@ -1,0 +1,33 @@
+const SignUp = async (request, response) => 
+{
+    response.render("./SignUpPage");
+}
+
+const RegisterNewUser = async (request, response) => 
+{
+    response.redirect("/student/dashboard");
+}
+
+const SignIn = async (request, response) => 
+{
+    response.render("./SignInPage");
+}
+
+const LoginUser = async (request, response) => 
+{
+    response.redirect("/company/dashboard");
+}
+
+const PasswordReset = async (request, response) => 
+{
+    response.render("./PasswordResetPage");
+}
+
+const PasswordRecovered = async (request, response) => 
+{
+    response.redirect("/employee/dashboard");
+}
+
+module.exports = {
+    SignUp, RegisterNewUser, SignIn, LoginUser, PasswordReset, PasswordRecovered,
+};
