@@ -33,11 +33,19 @@ app.set('view engine', 'ejs');
 
 // IMPORT ROUTES
 const PublicRoutes = require("./Protocols/Routes/PublicRoutes");
+const CompanyRoutes = require("./Protocols/Routes/CompanyRoutes");
+const EmployeeRoutes = require("./Protocols/Routes/EmployeeRoutes");
+const StudentRoutes = require("./Protocols/Routes/StudentRoutes");
+const AdminRoutes = require("./Protocols/Routes/AdminRoutes");
 
 // IMPORT APIs
 
 // ASSIGN ROUTES & APIs
 app.use("/", PublicRoutes);
+app.use("/company/", CompanyRoutes);
+app.use("/employee/", EmployeeRoutes);
+app.use("/student/", StudentRoutes);
+app.use("/admin/", AdminRoutes);
 
 // ASSIGN AND LISTEN PORT
 const port = process.env.PORT || 3000
