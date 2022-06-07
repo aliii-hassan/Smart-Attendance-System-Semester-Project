@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>
+        Smart Attendance System
+    </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <%- include("./Components/ImportCssFiles"); %>
+  </head>
+  <body>
+
+    <!-- Embed NavBar Component -->
+    <%- include("./Components/NavBar"); %>
+
+    <!-- Embed Breadcrumb Component -->
+    <%
+    var BreadcrumbData = [
+                            {
+                                "PageName": "Home",
+                                "PageLink": "/",
+                            },
+                            {
+                                "PageName": "Sign In",
+                            }
+                        ];
+    %>
+    <%- include("./Components/Breadcrumb", {BreadcrumbData: BreadcrumbData}); %>
+    
+    <!-- Current Page Body -->
+    <div id="page-body-div">
+        <div class="container py-3 h-100">
+            <div class="row justify-content-center align-items-center h-100">
+                <div class="col-12 col-lg-9">
+                    <div class="card shadow-2-strong card-registration bg-dark" style="border-radius: 15px;">
+                        <div class="card-body p-4 p-md-5">
+                            <h2 class="mb-4 pb-2 pb-md-0 mb-md-5 text-primary font-weight-bold">SIGN IN FORM</h2>
+                            
+                            <form id="signin-form" class="text-light" action="/signin" method="POST">
+                                <div class="row">
+                                    <!-- Embed UsernamePassword Component -->
+                                    <%
+                                    var TagNamePrefixData = "";
+                                    %>
+                                    <%- include("./Components/UsernamePassword", {TagNamePrefixData: TagNamePrefixData}); %>
+                                </div>
+                
+                                <div class="mt-4 pt-2 text-right">
+                                    <input class="btn btn-primary btn-outline-light btn-lg font-weight-bold" type="submit" value="SIGN IN" />
+                                </div>
+
+                                <div class="d-flex text-left float-left">
+                                    Don't Have an Account? 
+                                    <a href="/signup" class="btn btn-primary btn-outline-light btn-sm font-weight-bold">
+                                        SIGN UP
+                                    </a>
+                                </div>
+                            </form>
+
+                            <div id="forget-password-div" class="mt-5 py-1 text-center" style="border-radius: 10px;">
+                                <a href="/password-reset">
+                                    Forgotten Password?
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Embed Footer Component -->
+    <%- include("./Components/Footer"); %>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <%- include("./Components/ImportJavascriptFiles"); %>
+  </body>
+</html>
