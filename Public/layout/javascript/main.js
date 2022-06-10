@@ -569,27 +569,3 @@ function PasswordResetFormSubmission(event)
 
     $('#password-reset-form').validate();
 }
-
-// function Test()
-// {
-//     $.get("./databaseData/CityState.json", function(data){
-//         data.forEach(function(newdata){
-
-//                 $.ajax({
-//                     type: "post",
-//                     url: "/api/data-upload",
-//                     contentType: 'application/json',
-//                     data: JSON.stringify({
-//                         "cityName": newdata.name,
-//                         "stateName": newdata.state_name,
-//                     }),
-//                     success: function (response) {
-//                         console.log(response);
-//                     },
-//                     error: function (error) {
-//                         console.log(error);
-//                     }
-//                 });
-//         });
-//     });
-// }
