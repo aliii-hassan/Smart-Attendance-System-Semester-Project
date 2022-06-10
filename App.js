@@ -41,17 +41,12 @@ const EmployeeRoutes = require("./Protocols/Routes/EmployeeRoutes");
 const StudentRoutes = require("./Protocols/Routes/StudentRoutes");
 const AdminRoutes = require("./Protocols/Routes/AdminRoutes");
 
-// IMPORT APIs
-// const PublicAPIs = require("./Protocols/APIs/PublicAPIs");
-
 // ASSIGN ROUTES & APIs
 app.use("/", PublicRoutes);
 app.use("/company/", CompanyRoutes);
 app.use("/employee/", EmployeeRoutes);
 app.use("/student/", StudentRoutes);
 app.use("/admin/", AdminRoutes);
-
-// app.use("/api/", PublicAPIs);
 
 // ASSIGN AND LISTEN PORT
 const port = process.env.PORT || 3000
