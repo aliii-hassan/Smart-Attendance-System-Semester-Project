@@ -8,7 +8,6 @@ $(function ()
     EnableInternationalTelephoneInput();
 
     // Set Current Page URL On Pages Having Forms
-    console.log($(location).attr("href"));
     $("input[name='current-page-url']").val();
 
     // Site Home Page Animations, Modal-Popup
