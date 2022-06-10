@@ -1,0 +1,34 @@
+#footer-copyright-div, #forget-password-div
+{
+    background-color: rgba(0,0,0,0.2);
+}
+
+#company-form-div, #employee-form-div, #student-form-div, #company-name
+{
+    width: 100%;
+}
+
+.description-site-introduction
+{
+    opacity: 0;
+}
+
+.description-site-introduction.active 
+{
+    -webkit-animation: description-site-introduction-animation 2s forwards;
+    -webkit-animation-delay: 0.2s;
+    animation: description-site-introduction-animation 2s forwards;
+    animation-delay: 0.2s;
+}
+
+@keyframes description-site-introduction-animation 
+{
+    from {
+        left: -300px;
+        opacity: 0;
+    } 
+    to {
+        left: 0;
+        opacity: 1;
+    }
+}
