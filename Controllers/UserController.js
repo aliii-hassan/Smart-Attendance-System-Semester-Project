@@ -6,7 +6,6 @@ const { State } = require("../Models/StateModel");
 const { Country } = require("../Models/CountryModel");
 const { Industries } = require("../Models/IndustriesModel");
 const { NumberOfEmployees } = require("../Models/NumberOfEmployeesModel");
-const { Admin } = require("../Models/AdminModel");
 const { Company } = require("../Models/CompanyModel");
 const { Employee } = require("../Models/EmployeeModel");
 const { Student } = require("../Models/StudentModel");
