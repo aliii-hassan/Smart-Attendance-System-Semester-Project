@@ -1,0 +1,100 @@
+<div class="modal fade" id="AttendanceCrudModal" tabindex="-1" role="dialog" aria-labelledby="AttendanceCrudModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-dark rounded">
+        
+            <div class="modal-header">
+                <h5 class="modal-title text-primary" id="AttendanceCrudModalTitle">
+                Attendance Record
+                </h5>
+            </div>
+
+            <form id="attendance-form" class="text-light" action="" method="">
+                <input id="current-attendance-record-user-id" name="userAccountID" type="text" value="" hidden />
+                <input id="current-attendance-record-id" type="text" value="" hidden />
+                <input id="current-attendance-record-gps-location-value" name="attendeeGpsLocation" type="text" value="" hidden>
+                <div class="modal-body">
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">                
+                                <div class="form-check">
+                                    <label class="form-label font-weight-bold" for="current-attendance-record-user-type">
+                                        Select User Type:
+                                    </label>
+                                    <span id="current-attendance-record-user-type-span" class="asterisk ml-1 font-weight-bold text-danger">
+                                        *
+                                    </span>
+                                </div>
+
+                                <div class="form-check ml-3">
+                                    <input type="radio" class="form-check-input" name="attendeeUserType" id="current-attendance-record-user-type-employee" 
+                                            value="Employee">
+                                    <label class="form-label" for="Employee">
+                                        Employee (Teacher, Staff etc.)
+                                    </label>
+                                </div>
+
+                                <div class="form-check ml-3">
+                                    <input type="radio" class="form-check-input" name="attendeeUserType" id="current-attendance-record-user-type-student" 
+                                            value="Student">
+                                    <label class="form-label" for="Student">
+                                        Student
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-10 mb-4 form-group pmd-textfield pmd-textfield-outline">
+                                <label class="form-label font-weight-bold" for="current-attendance-record-attendee-profile">
+                                    Attendee's Profile:
+                                </label>
+                                <span id="current-attendance-record-attendee-profile-span" class="asterisk ml-1 font-weight-bold text-danger">
+                                    *
+                                </span>
+                                <select id="current-attendance-record-attendee-profile" name="attendeeProfileID" class="form-control select2 ml-1" style="width: 100%;">
+                                    <option value="" disabled selected>Select Attendee's Profile</option>
+                                </select>
+                            </div>
+
+                            <div class="col-12 mb-4 form-group pmd-textfield pmd-textfield-outline">
+                                <label class="form-label font-weight-bold" for="current-attendance-record-date-time">
+                                    Date & Time:
+                                </label>
+                                <span id="current-attendance-record-date-time-span" class="asterisk ml-1 font-weight-bold text-danger">
+                                    *
+                                </span>
+                                <div id="current-attendance-record-date-time-div" class="col-md-6 input-group date">
+                                    <input type="text" id="current-attendance-record-date-time" name="attendanceDateAndTime" 
+                                            class="form-control" placeholder="Select Date & Time"/>
+                                </div>
+                            </div>
+
+                            <div class="col-12 mb-4 form-group pmd-textfield pmd-textfield-outline">
+                                <label class="form-label font-weight-bold" for="current-attendance-record-ip-address">
+                                    Your Current IP:
+                                </label>
+                                <span id="current-attendance-record-ip-address-span" class="asterisk ml-1 font-weight-bold text-danger">
+                                    <sup>(It is Auto Detected. You Cannot Change it)</sup>
+                                </span>
+                                <input type="text" id="current-attendance-record-ip-address" name="attendeeIpAddress" class="form-control" readonly>
+                            </div>
+
+                            <div id="current-attendance-record-gps-location-div" class="col-12">
+                                <label class="form-label font-weight-bold" for="current-attendance-record-gps-location">
+                                    Your Current Location: 
+                                </label>
+                                <span id="current-attendance-record-gps-location-span" class="asterisk ml-1 font-weight-bold text-danger">
+                                    <sup>(It is Auto Detected. You Cannot Change it)</sup>
+                                </span>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="modal-footer">
+                    <input id="attendance-crud-modal-close-button" class="btn btn-light font-weight-bold" 
+                            type="button" value="Close" />
+                    <input id="attendance-crud-modal-submit-button" class="btn btn-primary btn-outline-light font-weight-bold" type="submit" value="Send Attendance" />
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

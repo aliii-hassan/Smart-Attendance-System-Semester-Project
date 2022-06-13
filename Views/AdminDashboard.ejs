@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>
+        Smart Attendance System
+    </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <%- include("./Components/ImportCssFiles"); %>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
+  </head>
+  <body>
+
+    <!-- Embed NavBar Component -->
+    <%
+    var NavBarData = { "SignedIn": true, "UserType": 'admin' };
+    %>
+    <%- include("./Components/NavBar", { NavBarData: NavBarData }); %>
+
+    <!-- Embed Breadcrumb Component -->
+    <%
+    var BreadcrumbData = [
+                            {
+                                "PageName": "Home",
+                                "PageLink": "/",
+                            },
+                            {
+                                "PageName": "Admin Dashboard",
+                            }
+                        ];
+    %>
+    <%- include("./Components/Breadcrumb", {BreadcrumbData: BreadcrumbData}); %>
+    
+    <!-- Current Page Body -->
+    <div class="container">
+        <div id="page-body-div">
+            
+            <div id="attendance-div">
+                <%- include("./Components/AdminAttendanceManagementComponent") %>
+            </div> 
+        </div>
+    </div>
+
+    <!-- Embed CRUD Modals  -->
+    <%- include("./Components/AttendanceCrudModal"); %>
+
+    <!-- Embed Footer Component -->
+    <%- include("./Components/Footer"); %>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <%- include("./Components/ImportJavascriptFiles"); %>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="/layout/javascript/admin.js"></script>
+  </body>
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>
+        Smart Attendance System
+    </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <%- include("./Components/ImportCssFiles"); %>
+  </head>
+  <body>
+
+    <!-- Embed NavBar Component -->
+    <%
+    var NavBarData = { "SignedIn": false, "UserType": '' };
+    %>
+    <%- include("./Components/NavBar", { NavBarData: NavBarData }); %>
+
+    <!-- Embed Breadcrumb Component -->
+    <%
+    var BreadcrumbData = [
+                            {
+                                "PageName": "Home",
+                                "PageLink": "/",
+                            },
+                            {
+                                "PageName": "Contact Us",
+                            }
+                        ];
+    %>
+    <%- include("./Components/Breadcrumb", {BreadcrumbData: BreadcrumbData}); %>
+    
+    <!-- Current Page Body -->
+    <div id="page-body-div">
+        <div class="container py-3 h-100">
+            <div class="row justify-content-center align-items-center h-100">
+                <div class="col-12 col-lg-9">
+                    <div class="card shadow-2-strong card-registration bg-dark" style="border-radius: 15px;">
+                        <div class="card-body p-4 p-md-5">
+                            <h2 class="mb-4 pb-2 pb-md-0 mb-md-5 text-primary font-weight-bold">CONTACT US</h2>
+                            
+                            <form id="password-reset-form" class="text-light" action="password-reset" method="POST">
+                                <input name="current-page-url" type="url" value="" hidden />
+                                <div class="row">
+                                    <!-- Embed UsernamePassword Component -->
+                                    <div class="col-12 mb-4 form-group pmd-textfield pmd-textfield-outline">
+                                        <label class="form-label font-weight-bold" for="conact-us-name">
+                                            Name:
+                                        </label>
+                                        <span id="conact-us-name-span" class="asterisk ml-1 font-weight-bold text-danger">
+                                            *
+                                        </span>
+                                        <input type="text" id="conact-us-name" name="conact-us-name" class="form-control" 
+                                                placeholder=" Enter Name">
+                                    </div>
+                                    <div class="col-12 mb-4 form-group pmd-textfield pmd-textfield-outline">
+                                        <label class="form-label font-weight-bold" for="email-address">
+                                            Email Address:
+                                        </label>
+                                        <span id="email-address-span" class="asterisk ml-1 font-weight-bold text-danger">
+                                            *
+                                        </span>
+                                        <input type="text" id="email-address" name="email-address" class="form-control" 
+                                                placeholder=" email-address@xyz.com">
+                                    </div>
+                                    <div class="col-12 mb-4 form-group pmd-textfield pmd-textfield-outline">
+                                        <label class="form-label font-weight-bold" for="contact-us-contact-number">
+                                            Contact Number:
+                                        </label>
+                                        <span id="contact-us-contact-number-span" class="asterisk ml-1 font-weight-bold text-danger">
+                                            *
+                                        </span>
+                                        <input type="tel" id="contact-us-contact-number" name="contact-number" class="form-control ml-1" 
+                                                placeholder=" XXXXXXXXXX"/>
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <label class="form-label font-weight-bold" for="contact-us-message">
+                                            Message:
+                                        </label>
+                                        <span id="contact-us-message-span" class="asterisk ml-1 font-weight-bold text-danger">
+                                            *
+                                        </span>
+                                        <textarea id="contact-us-message" class="form-control" row="5"></textarea>
+                                    </div>
+                                </div>
+                
+                                <div class="mt-4 pt-2 text-right">
+                                    <input class="btn btn-primary btn-outline-light btn-lg font-weight-bold" type="submit" value="Send Message" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Embed Footer Component -->
+    <%- include("./Components/Footer"); %>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <%- include("./Components/ImportJavascriptFiles"); %>
+  </body>
+</html>

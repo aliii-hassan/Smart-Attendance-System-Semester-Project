@@ -1,0 +1,96 @@
+<table id="attendance-data-table" class="table table-striped table-bordered col-12">
+    <thead class="bg-dark text-primary font-weight-bold">
+        <tr>
+            <th>User Name</th>
+            <th>Email Address</th>
+            <th>User Type</th>
+            <th class="pb-4">Contact</th>
+            <th>Attendance Date</th>
+            <th>Attendance Time</th>
+            <th>Atttendee IP Address</th>
+            <th>
+                <a id="insert-attendance-record-button" class="btn btn-floating text-light pl-4" href="#" role="button">
+                    <i class="fa">
+                        <img src="/images/AddRecordIcon.png" alt="Add New Record">
+                    </i>
+                </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody class="text-dark">
+        <%
+        if (!(AttendanceModelObject == null || AttendanceModelObject == ""))
+        {
+            AttendanceModelObject.forEach(function (AttendanceData) 
+            {
+                %>
+                <tr>
+                    <td>
+                        <%= AttendanceData.attendeeProfile.firstName %> <%= AttendanceData.attendeeProfile.lastName %>
+                    </td>
+                    
+                    <td>
+                        <%= AttendanceData.attendeeUser.emailAddress %>
+                    </td>
+                    
+                    <td>
+                        <%= AttendanceData.attendeeUserType %>
+                    </td>
+                    
+                    <td>
+                        <%= AttendanceData.attendeeUser.contact %>
+                    </td>
+                    
+                    <td>
+                        <%= AttendanceData.attendanceDateAndTime.getDate()%>-<%=AttendanceData.attendanceDateAndTime.getMonth()%>-<%=AttendanceData.attendanceDateAndTime.getFullYear() %>
+                    </td>
+                    
+                    <td>
+                        <%= AttendanceData.attendanceDateAndTime.toISOString().split('T')[1].split('.')[0] %>
+                    </td>
+                    
+                    <td>
+                        <%= AttendanceData.attendeeIpAddress %>
+                    </td>
+
+                    <td>
+                        <a id="update-attendance-record-button" class="btn btn-sm btn-floating text-light col-5" href="#"
+                            role="button" data-toggle="modal">
+                            <div name="current-attendance-record-id-div" hidden><%= AttendanceData['_id'] %></div>
+                            <i class="fa">
+                                <img src="/images/EditRecordIcon.png" alt="Edit Record">
+                            </i>
+                        </a>
+                        <a id="delete-attendance-record-button" class="btn btn-sm btn-floating text-light col-5" href="#" role="button">
+                            <div name="current-attendance-record-id-div" hidden><%= AttendanceData['_id'] %></div>
+                            <i class="fa">
+                                <img src="/images/DeleteRecordIcon.png" alt="Delete Record">
+                            </i>
+                        </a>
+                    </td>
+                </tr>
+                <%
+            });
+        }
+        %>
+    </tbody>
+    <tfoot class="bg-dark text-primary font-weight-bold">
+        <tr>
+            <th class="pt-4">User Name</th>
+            <th class="pt-4">Email Address</th>
+            <th class="pt-4">User Type</th>
+            <th class="pt-4">Contact</th>
+            <th class="pt-4">Attendance Date</th>
+            <th class="pt-4">Attendance Time</th>
+            <th class="pt-4">Atttendee IP Address</th>
+            <th>
+                <a id="insert-attendance-record-button" class="btn btn-floating text-light pl-4" 
+                    role="button" href="#" data-toggle="modal">
+                    <i class="fa">
+                        <img src="/images/AddRecordIcon.png" alt="Insert New Record">
+                    </i>
+                </a>
+            </th>
+        </tr>
+    </tfoot>
+</table>

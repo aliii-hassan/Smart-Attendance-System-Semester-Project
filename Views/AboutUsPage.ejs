@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>
+        Smart Attendance System
+    </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <%- include("./Components/ImportCssFiles"); %>
+  </head>
+  <body>
+
+    <!-- Embed NavBar Component -->
+    <%
+    var NavBarData = { "SignedIn": false, "UserType": '' };
+    %>
+    <%- include("./Components/NavBar", { NavBarData: NavBarData }); %>
+
+    <!-- Embed Breadcrumb Component -->
+    <%
+    var BreadcrumbData = [
+                            {
+                                "PageName": "Home",
+                                "PageLink": "/",
+                            },
+                            {
+                                "PageName": "About Us",
+                            }
+                        ];
+    %>
+    <%- include("./Components/Breadcrumb", {BreadcrumbData: BreadcrumbData}); %>
+    
+    <!-- Current Page Body -->
+        <div class="container">
+            <h1 class="header text-center text-primary">
+                About Us
+            </h1>
+            <div class="container">
+                <div class="p-3  d-flex flex-column flex-sm-column flex-md-row flex-lg-row flex-xl-row align-items-center">
+                    <div class="m-5">
+                        <h3 class="text-center text-dark">
+                            What Our CEO Says About The Company?
+                        </h3>
+                        <p  class="text-center text-dark">
+                            <em> 
+                                With Our High Technological Capabilities, Our Customers Comprise not only Major Domestic 
+                                Companies But We are also a Partner in Large Overseas Projects.  
+                            </em>
+                        </p>
+                    </div>
+                        
+                    <img src="./images/ALI_HASSAN.jpg" alt="ALI HASSAN CEO - FOUNDER" class="rounded w-50 mt-6 mb-6">
+                </div>
+                        
+                <div class="p-3 m-3 d-flex flex-column flex-sm-column f flex-md-row flex-lg-row flex-xl-row align-items-center" >
+                    <div class="m-5 bg-dark p-4" style="border-radius: 10px;">
+                        <h3 class="text-center text-primary">What Our Company Provides To Our Customers?
+                        </h3>
+                        <p  class="text-light text-center">
+                            SAS Helps the Organization in the Recruitment Process and Saves the Organization 
+                            From Maintaining Documents for Each and Every Appeared Candidate. 
+                        </p>
+                        <p  class="text-light text-center">
+                            Its Our Top Priority to Provide Ease in Management, It Let You View & Manage Employee 
+                            Attendance in such a Simple Way 
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Embed HomePageLoginPopup Component -->
+    <%- include("./Components/HomePageLoginPopup"); %>
+
+    <!-- Embed Footer Component -->
+    <%- include("./Components/Footer"); %>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <%- include("./Components/ImportJavascriptFiles"); %>
+  </body>
+</html>
