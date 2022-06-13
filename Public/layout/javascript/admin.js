@@ -51,7 +51,7 @@ function UserIpAddressAndGps()
             var Latitude = currentPosition.coords.latitude;
             var Longitude = currentPosition.coords.longitude;
 
-            var currentPositionLink = "http://maps.google.com/maps?q="+Latitude+","+Longitude+"&z=17&output=embed";
+            var currentPositionLink = "https://maps.google.com/maps?q="+Latitude+","+Longitude+"&z=17&output=embed";
             var embedGpsLocation = "<label class=\"form-label font-weight-bold\" for=\"current-attendance-record-gps-location\">"+
                                         "Your Current Location: "+
                                     "</label>"+
