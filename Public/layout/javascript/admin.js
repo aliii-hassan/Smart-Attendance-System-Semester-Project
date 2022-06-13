@@ -58,7 +58,7 @@ function UserIpAddressAndGps()
                                     "<span id=\"current-attendance-record-gps-location-span\" class=\"asterisk ml-1 font-weight-bold text-danger\">"+
                                         "<sup>(It is Auto Detected. You Cannot Change it)</sup>"+
                                     "</span>"+
-                                    "<iframe frameborder=\"0\" style=\"border: 0; width: 100%; height: 15em;\""+ 
+                                    "<iframe frameborder=\"0\" style=\"border: 0; width: 100%;\""+ 
                                     "src=\""+currentPositionLink+"\"></iframe>";
 
             $('#current-attendance-record-gps-location-div').show('fast', function () {
